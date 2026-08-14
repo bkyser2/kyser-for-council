@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  background: #000;
+  color: #ededed;
+}
+
+/* Smooth anchor scroll for section navigation */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+/* Subtle selection color — patriotic blue */
+::selection {
+  background: rgba(59, 108, 246, 0.4);
+  color: #fff;
+}
+
+/* Custom grid background used in the hero */
+.hero-grid {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(
+    ellipse at 50% 40%,
+    rgba(0, 0, 0, 1) 30%,
+    transparent 75%
+  );
+  -webkit-mask-image: radial-gradient(
+    ellipse at 50% 40%,
+    rgba(0, 0, 0, 1) 30%,
+    transparent 75%
+  );
+}
+
+/* Animated gradient text — used on the tagline (red/white/blue shimmer) */
+.gradient-text {
+  background: linear-gradient(
+    90deg,
+    #ffffff 0%,
+    #ffffff 25%,
+    #3b6cf6 45%,
+    #ffffff 55%,
+    #e11d48 65%,
+    #ffffff 85%,
+    #ffffff 100%
+  );
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 7s linear infinite;
+}
+
+/* Vercel-style "card" — thin border, subtle inner shadow on hover */
+.card {
+  @apply relative rounded-xl border border-border bg-[#0a0a0a] p-6 transition-all duration-300;
+}
+.card:hover {
+  border-color: #333;
+  box-shadow: 0 0 0 1px #333, 0 20px 60px -20px rgba(59, 108, 246, 0.22);
+  transform: translateY(-2px);
+}
+
+/* Thin dividing line */
+.hairline {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.15),
+    transparent
+  );
+}
