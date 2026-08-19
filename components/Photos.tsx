@@ -11,7 +11,12 @@ export const dynamic = "force-static";
 
 const SUPPORTED = new Set([".jpg", ".jpeg", ".png", ".webp", ".avif", ".gif"]);
 
-type Photo = { src: string; alt: string; caption?: string };
+type Photo = {
+  src: string;
+  alt: string;
+  caption?: string;
+  objectPosition?: string;
+};
 
 /**
  * Turn a filename like "2025-08-14-council-meeting.jpg" into
@@ -57,6 +62,7 @@ function loadPhotos(): Photo[] {
         src,
         alt: override?.alt ?? humanize(filename),
         caption: override?.caption,
+        objectPosition: override?.objectPosition,
       };
     });
 
@@ -72,20 +78,20 @@ export default function Photos() {
         id="photos"
         eyebrow="Photos"
         title="Out in the community."
-        intro="Photos from council meetings, community events, and neighborhoods across Doraville — coming soon."
+        intro="Photos from council meetings, community events, and neighborhoods across Doraville. Coming soon."
       >
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
           {[0, 1, 2, 3, 4, 5].map((i) => (
             <div
               key={i}
-              className="aspect-[4/3] rounded-lg border border-border bg-gradient-to-br from-[#0c0c0c] to-[#050505]"
+              className="aspect-[4/3] rounded-lg border border-white/25 bg-white/10"
             />
           ))}
         </div>
-        <p className="mt-6 text-center font-mono text-[11px] uppercase tracking-widest text-muted">
+        <p className="mt-6 text-center font-mono text-[11px] font-bold uppercase tracking-widest text-white/85">
           Drop any image into{" "}
-          <span className="text-brand">/public/photos/</span> — it appears here
-          automatically.
+          <span className="text-white underline">/public/photos/</span> and it
+          appears here automatically.
         </p>
       </Section>
     );
@@ -95,14 +101,14 @@ export default function Photos() {
     <Section
       id="photos"
       eyebrow="Photos"
-      title="Out in the community."
-      intro="Real moments from real Doraville."
+      title="Real Moments from Real Doraville"
+      intro="Life in motion."
     >
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
         {photos.map((p, i) => (
           <figure
             key={p.src}
-            className="group relative overflow-hidden rounded-lg border border-border bg-[#0a0a0a]"
+            className="group relative overflow-hidden rounded-lg border border-white/40 bg-white/5 shadow-md"
           >
             <div className="relative aspect-[4/3]">
               <Image
@@ -111,11 +117,16 @@ export default function Photos() {
                 fill
                 sizes="(min-width: 640px) 33vw, 50vw"
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
+                style={
+                  p.objectPosition
+                    ? { objectPosition: p.objectPosition }
+                    : undefined
+                }
                 priority={i < 3}
               />
             </div>
             {p.caption && (
-              <figcaption className="absolute inset-x-0 bottom-0 translate-y-full bg-gradient-to-t from-black/90 to-transparent px-3 py-2 text-xs text-foreground transition-transform duration-300 group-hover:translate-y-0">
+              <figcaption className="absolute inset-x-0 bottom-0 translate-y-full bg-gradient-to-t from-foreground/90 to-transparent px-3 py-2 text-xs font-semibold text-white transition-transform duration-300 group-hover:translate-y-0">
                 {p.caption}
               </figcaption>
             )}

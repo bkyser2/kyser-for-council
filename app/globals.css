@@ -3,13 +3,19 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 html,
 body {
-  background: #000;
-  color: #ededed;
+  background: #a33e5c;
+  color: #ffffff;
+  /* Slightly heavier body weight than default so headlines and paragraphs
+     read well on mobile devices, especially iOS Safari which renders
+     Geist a touch lighter than desktop Chrome. */
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Smooth anchor scroll for section navigation */
@@ -18,17 +24,17 @@ html {
   scroll-padding-top: 80px;
 }
 
-/* Subtle selection color — patriotic blue */
+/* Text selection: light overlay */
 ::selection {
-  background: rgba(59, 108, 246, 0.4);
-  color: #fff;
+  background: rgba(255, 255, 255, 0.35);
+  color: #a33e5c;
 }
 
-/* Custom grid background used in the hero */
+/* Hero grid background, soft white lines on the raspberry pink */
 .hero-grid {
   background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
   background-size: 56px 56px;
   mask-image: radial-gradient(
     ellipse at 50% 40%,
@@ -42,41 +48,51 @@ html {
   );
 }
 
-/* Animated gradient text — used on the tagline (red/white/blue shimmer) */
+/* Animated gradient text used on the tagline: white -> sky -> white */
 .gradient-text {
   background: linear-gradient(
     90deg,
     #ffffff 0%,
-    #ffffff 25%,
-    #3b6cf6 45%,
-    #ffffff 55%,
-    #e11d48 65%,
-    #ffffff 85%,
+    #ffffff 30%,
+    #7dd3fc 50%,
+    #ffffff 70%,
     #ffffff 100%
   );
   background-size: 220% 100%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: shimmer 7s linear infinite;
+  animation: shimmer 8s linear infinite;
+  /* Explicit weight prevents iOS from rendering the shimmer text too thin */
+  font-weight: 800;
 }
 
-/* Vercel-style "card" — thin border, subtle inner shadow on hover */
+/* Card component: white surface with dark navy text inside */
 .card {
-  @apply relative rounded-xl border border-border bg-[#0a0a0a] p-6 transition-all duration-300;
+  @apply relative rounded-xl border p-6 transition-all duration-300;
+  background-color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.5);
+  color: #0b1e3a;
+  box-shadow: 0 4px 20px -8px rgba(0, 0, 0, 0.25);
 }
 .card:hover {
-  border-color: #333;
-  box-shadow: 0 0 0 1px #333, 0 20px 60px -20px rgba(59, 108, 246, 0.22);
+  border-color: #ffffff;
+  box-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.35);
   transform: translateY(-2px);
 }
 
-/* Thin dividing line */
+/* Anything inside a card should default to dark navy for readability */
+.card :is(h1, h2, h3, h4, p, span, dt, dd, a) {
+  color: inherit;
+}
+
 .hairline {
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.15),
+    rgba(255, 255, 255, 0.35),
     transparent
   );
 }
+
+

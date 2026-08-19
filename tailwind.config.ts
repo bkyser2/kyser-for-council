@@ -9,28 +9,33 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Vercel-inspired greyscale base
-        background: "#000000",
-        foreground: "#ededed",
-        muted: "#a1a1a1",
-        border: "#1f1f1f",
+        // Bold raspberry pink background with white text and sky-blue accent.
+        // Change these to re-theme the whole site.
+        background: "#a33e5c",         // raspberry rose (page background)
+        backgroundDeep: "#7d2c46",     // deeper rose for gradient stops
+        surface: "#ffffff",            // card / panel background (white)
+        surfaceInk: "#0b1e3a",         // navy text used INSIDE white cards
+        foreground: "#ffffff",         // body text (white on raspberry)
+        muted: "#fbd5e0",              // pale-pink secondary text (7.5:1 contrast)
+        border: "rgba(255,255,255,0.18)",   // translucent white borders
+        borderStrong: "rgba(255,255,255,0.4)",
         accent: "#ffffff",
-        // Patriotic accents (US red/white/blue on Vercel-black)
-        // `brand` is the primary accent (federal blue).
-        // `brand-red` is the secondary accent, used sparingly.
-        // Change these two hexes to re-theme the whole site.
-        brand: "#3b6cf6",
-        "brand-red": "#e11d48",
+        // Primary brand accent. Bright sky blue pops on raspberry pink.
+        brand: "#7dd3fc",
+        brandHover: "#38bdf8",
+        // Deep navy for inside-card CTAs and links (used on white surfaces).
+        brandInk: "#1e3a8a",
+        // Secondary brand accent used very sparingly (the live-dot ping).
+        "brand-red": "#fde68a",         // warm cream that reads as "gold" on pink
       },
       fontFamily: {
         sans: ["var(--font-geist-sans)", "system-ui", "sans-serif"],
         mono: ["var(--font-geist-mono)", "ui-monospace", "monospace"],
       },
       backgroundImage: {
-        // Blue glow on the left, red glow on the right — evokes a flag
-        // without ever showing one literally.
+        // Soft light glow behind the hero on the dark raspberry background.
         "grid-fade":
-          "radial-gradient(ellipse at 30% 0%, rgba(59,108,246,0.18), transparent 55%), radial-gradient(ellipse at 75% 10%, rgba(225,29,72,0.12), transparent 55%)",
+          "radial-gradient(ellipse at 30% 0%, rgba(125,211,252,0.22), transparent 55%), radial-gradient(ellipse at 75% 10%, rgba(255,255,255,0.15), transparent 55%)",
       },
       keyframes: {
         "fade-up": {
@@ -52,3 +57,4 @@ const config: Config = {
 };
 
 export default config;
+

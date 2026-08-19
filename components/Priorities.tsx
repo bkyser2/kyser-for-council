@@ -6,26 +6,26 @@ export default function Priorities() {
     <Section
       id="priorities"
       eyebrow="Platform"
-      title="What I'll fight for on the council."
-      intro="Four commitments. No consultants wrote them. They're what I already say at the microphone every month."
+      title="My Core Initiatives for Doraville"
+      intro="A strong city is built from the foundation up, not the wish list down."
     >
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {priorities.map((p, i) => (
           <article key={p.title} className="card group">
             <div className="mb-4 flex items-center justify-between">
-              <span className="font-mono text-[11px] uppercase tracking-widest text-muted">
+              <span className="font-mono text-[11px] font-bold uppercase tracking-widest text-[#0b1e3a]/50">
                 0{i + 1}
               </span>
               {p.stat && (
-                <span className="rounded-full border border-border px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-widest text-brand">
+                <span className="rounded-full border border-[#0b1e3a]/15 bg-[#f5f2ff] px-2.5 py-0.5 font-mono text-[10px] font-bold uppercase tracking-widest text-[#a33e5c]">
                   {p.stat}
                 </span>
               )}
             </div>
-            <h3 className="text-xl font-semibold tracking-tight text-foreground">
+            <h3 className="text-xl font-bold tracking-tight text-[#0b1e3a]">
               {p.title}
             </h3>
-            <p className="mt-3 text-[15px] leading-relaxed text-muted">
+            <p className="mt-3 text-[15px] font-medium leading-relaxed text-[#0b1e3a]/75">
               {p.body}
             </p>
           </article>

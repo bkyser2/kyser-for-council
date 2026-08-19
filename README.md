@@ -129,3 +129,4 @@ Made for a candidate who does his own homework. If you get stuck, the two files 
 
 - `content.ts` — what the site says
 - `tailwind.config.ts` — what the site looks like
+# kyser-for-council

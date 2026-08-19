@@ -6,10 +6,10 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://kyserforcouncil.com"),
-  title: `${candidate.name} — ${candidate.role}`,
+  title: `${candidate.name} · ${candidate.role}`,
   description: candidate.subTagline,
   openGraph: {
-    title: `${candidate.name} — ${candidate.role}`,
+    title: `${candidate.name} · ${candidate.role}`,
     description: candidate.subTagline,
     type: "website",
     locale: "en_US",
