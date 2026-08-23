@@ -7,12 +7,10 @@ export default function Hero() {
       id="top"
       className="relative isolate overflow-hidden pt-40 pb-28 sm:pt-48 sm:pb-36"
     >
-      {/* Grid background */}
-      <div aria-hidden className="absolute inset-0 -z-10 hero-grid" />
-      {/* Warm glow */}
+      {/* Soft radial glow behind the hero */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[600px] bg-grid-fade"
+        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[600px] bg-hero-glow"
       />
 
       <div className="mx-auto max-w-5xl px-6 text-center">

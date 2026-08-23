@@ -6,7 +6,7 @@ export default function Record() {
     <Section
       id="record"
       eyebrow="Track Record"
-      title="Already in the Room"
+      title="Already Hard at Work"
       intro="Before asking for your vote, here's what I've already been doing on my own time."
     >
       <ol className="relative mx-auto max-w-3xl">

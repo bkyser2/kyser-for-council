@@ -22,11 +22,10 @@ export default function DonatePage() {
           id="top"
           className="relative isolate overflow-hidden pt-32 pb-24 sm:pt-40 sm:pb-32"
         >
-          {/* Grid background, matching Hero */}
-          <div aria-hidden className="absolute inset-0 -z-10 hero-grid" />
+          {/* Soft radial glow, matching Hero */}
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[600px] bg-grid-fade"
+            className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[600px] bg-hero-glow"
           />
 
           <div className="mx-auto max-w-4xl px-6 text-center">
@@ -51,7 +50,7 @@ export default function DonatePage() {
               <span className="gradient-text">
                 {isLive
                   ? "Chip in to keep Doraville, Doraville."
-                  : "Donations open soon."}
+                  : "Donations Open Soon"}
               </span>
             </h1>
 

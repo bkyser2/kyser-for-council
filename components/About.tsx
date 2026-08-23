@@ -1,8 +1,41 @@
+import fs from "node:fs";
+import path from "node:path";
+import Image from "next/image";
 import { bio, candidate } from "@/content";
 import Section from "./Section";
 import { Linkedin } from "lucide-react";
 
+// Drop the "Welcome to Doraville" photo into /public/photos/ using ANY of
+// these filenames (first match wins) and it will appear here automatically.
+// No component edits needed once the file is in place.
+const WELCOME_CANDIDATES = [
+  "welcome-to-doraville.jpg",
+  "welcome-to-doraville.jpeg",
+  "welcome-to-doraville.png",
+  "welcome-to-doraville.webp",
+  "welcome_to_doraville.jpg",
+  "welcome_to_doraville.jpeg",
+  "welcome_to_doraville.png",
+  "welcome_to_doraville.webp",
+];
+
+function findWelcomePhoto(): string | null {
+  const dir = path.join(process.cwd(), "public", "photos");
+  for (const name of WELCOME_CANDIDATES) {
+    try {
+      if (fs.existsSync(path.join(dir, name))) {
+        return `/photos/${name}`;
+      }
+    } catch {
+      // ignore and keep looking
+    }
+  }
+  return null;
+}
+
 export default function About() {
+  const welcomeSrc = findWelcomePhoto();
+
   return (
     <Section
       id="about"
@@ -26,23 +59,38 @@ export default function About() {
         </div>
 
         <div className="lg:col-span-2">
-          <dl className="rounded-xl border border-white/50 bg-white p-2 shadow-lg">
-            {bio.facts.map((f, i) => (
-              <div
-                key={f.label}
-                className={`flex items-center justify-between px-4 py-3 ${
-                  i < bio.facts.length - 1 ? "border-b border-[#0b1e3a]/10" : ""
-                }`}
-              >
-                <dt className="font-mono text-[11px] font-semibold uppercase tracking-widest text-[#a33e5c]">
-                  {f.label}
-                </dt>
-                <dd className="text-sm font-semibold text-[#0b1e3a]">
-                  {f.value}
-                </dd>
-              </div>
-            ))}
-          </dl>
+          <figure className="relative overflow-hidden rounded-xl border border-white/50 bg-white/5 shadow-lg">
+            <div className="relative aspect-[3/2]">
+              {welcomeSrc ? (
+                <Image
+                  src={welcomeSrc}
+                  alt="Welcome to Doraville sign"
+                  fill
+                  sizes="(min-width: 1024px) 40vw, 100vw"
+                  className="object-cover object-center"
+                  priority
+                />
+              ) : (
+                <div className="flex h-full w-full items-center justify-center bg-white/10">
+                  <div className="px-6 text-center">
+                    <div className="font-mono text-[11px] font-bold uppercase tracking-widest text-white/85">
+                      Photo coming soon
+                    </div>
+                    <div className="mt-2 text-sm font-semibold text-white/90">
+                      Welcome to Doraville
+                    </div>
+                    <div className="mt-3 text-[11px] font-medium text-white/70">
+                      Drop{" "}
+                      <span className="text-white">
+                        welcome-to-doraville.jpg
+                      </span>{" "}
+                      into <span className="text-white">/public/photos/</span>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          </figure>
         </div>
       </div>
     </Section>

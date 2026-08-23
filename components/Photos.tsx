@@ -4,12 +4,18 @@ import Image from "next/image";
 import { photos as overrides } from "@/content";
 import Section from "./Section";
 
-// Force this section to be re-evaluated on each request so newly dropped
-// photos appear without a rebuild in dev. In production on Vercel this is
-// still evaluated at build time (which is what you want for perf).
-export const dynamic = "force-static";
+// Note: dynamic/static rendering is controlled at the route level
+// (app/page.tsx), not on this component.
 
 const SUPPORTED = new Set([".jpg", ".jpeg", ".png", ".webp", ".avif", ".gif"]);
+
+// Filenames (case-insensitive, without extension) that are used elsewhere on
+// the site and should NOT show up in the general photo gallery. The About
+// section, for example, uses `welcome-to-doraville.*` as its own hero image.
+const RESERVED_BASENAMES = new Set([
+  "welcome-to-doraville",
+  "welcome_to_doraville",
+]);
 
 type Photo = {
   src: string;
@@ -45,6 +51,12 @@ function loadPhotos(): Photo[] {
   const images = files
     .filter((f) => !f.startsWith(".")) // skip .gitkeep, .DS_Store, etc.
     .filter((f) => SUPPORTED.has(path.extname(f).toLowerCase()))
+    .filter((f) => {
+      // Skip files that are reserved for other sections (e.g. the About page's
+      // "welcome to Doraville" hero photo).
+      const base = f.replace(/\.[^.]+$/, "").toLowerCase();
+      return !RESERVED_BASENAMES.has(base);
+    })
     // Sort: filenames starting with a YYYY-MM-DD prefix come first, newest
     // first. Everything else falls back to alphabetical.
     .sort((a, b) => {

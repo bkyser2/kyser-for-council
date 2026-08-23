@@ -70,32 +70,32 @@ export const priorities = [
   {
     title: "Every Dollar Should Work for Doraville",
     stat: "Responsible budgeting",
-    body: "Doraville's budget grows every year, but families keep feeling squeezed. Before we fund the next new idea, let's make sure every dollar we spend is doing real work. I plan to implement a simple one question test: does this serve Doraville families first?",
-  },
-  {
-    title: "Your Home Should Be an Asset, Not a Burden",
-    stat: "Real Property Tax Relief",
-    body: "I've spoken up to council and remain in favor of stronger homestead exemptions, because long-time homeowners shouldn't be taxed out of the neighborhoods they helped build. Owning a home in Doraville should mean building your future, not scrambling to afford it.",
+    body: "Doraville's budget grows every year, but families keep feeling squeezed. Before we fund the next new idea, let's make sure every dollar we spend is doing real work. I'll implement a simple one-question test: does this serve Doraville families first? That includes stronger homestead exemptions for long-time homeowners who shouldn't be taxed out of the neighborhoods they helped build.",
   },
   {
     title: "If Developers Win, Residents Should Too",
     stat: "Incentives That Pay Off for Residents",
-    body: "Every developer incentive hits residents’ pocketbooks. So every deal should deliver something real and be enforceable. I'll push for one standard on every incentive: a clear answer to what Doraville is getting in return, enforcement clauses with real teeth, and milestone checkpoints across the timeline. Because good deals don't happen relying on blind trust. They need accountability built in.",
+    body: "Every developer incentive hits residents' pocketbooks. So every deal should deliver something real and be enforceable. I'll push for clear answers on what Doraville gets in return, enforcement clauses with real teeth, and milestone checkpoints across the timeline. Because good deals don't happen relying on blind trust. They need accountability built in.",
   },
    {
     title: "Room for Birds, Bees, and Backyards",
-    stat: "Green Space & Wildlife",
+    stat: "Environmentally Conscious",
     body: "Nature isn't a luxury, it's part of what makes Doraville feel like home. I'll push for stronger mature tree preservation, smarter stormwater planning, and wildlife-friendly building standards that protect our songbirds, pollinators, and green spaces as we grow. Because how we build matters just as much as what we build.",
   },
-  {
-    title: "Recycling Should Be Easy",
-    stat: "Doravile CHaRM",
-    body: "Right now, if you want to responsibly recycle electronics, paint, or hard-to-recycle material, you're driving to another city. Doraville can do better. I'll work to bring CHaRM-style drop-off events right here in our community.",
+   {
+    title: "Open Communication",
+    stat: "Transparency by Default",
+    body: "Too often, major decisions get made before residents even know about them. I want regular town halls, clearer communication between council and the public, and a better, more positive relationship between the police department and the people they serve, including clearer channels for feedback and follow-up. If we're going to ask residents' to trust our government, then we need to listen first because trust goes both ways.",
   },
   {
-    title: "Keep Doraville, Doraville",
-    stat: "Character matters",
-    body: "We are not Chamblee. We are not Brookhaven. Doraville has its own history, its own people, and its own charm. Growth is welcome, on our terms, in our voice, at our pace.",
+    title: "Supporting Local Business",
+    stat: "Improve Support for Small Busnesses",
+    body: "Big chains and outside big developers get all the attention, but small businesses are the heartbeat of Doraville. I'll push for faster permitting, fair tax incentives for local owners, and dedicated support programs to help homegrown businesses open and stay open. Let's build wealth right here in our communities.",
+  },
+  {
+    title: "Safer, Smarter Streets",
+    stat: "Traffic and Pedestrian Safety",
+    body: "Traffic congestion isn't just frustrating, it's dangerous. I'll push for logical, effective traffic calming measures that  work and aren't just a flashy band-aid. I want to push for things like greater enforcement of traffic violations, creating safer crossings and protected bike lanes where it makes sense.",
   },
 ];
 
@@ -117,12 +117,12 @@ export const record = [
    {
     year: "2024\u20132025",
     title: "Fought for the chickens",
-    body: "Urged the city council to re-consider allowing backyard chickens in Doraville.",
+    body: "Urged the city council to re-consider allowing backyard chickens in Doraville. They voted 'cluck yes!'",
   },
   {
     year: "Ongoing",
-    title: "Improve transparency",
-    body: "Working to expand transparency between the city, police department and its citizens.",
+    title: "Improve transparency and trust",
+    body: "Urged the council to cancel their Flock contract and instead reinvest those funds to expand transparency and trust between the city, police department and its citizens.",
   },
 ];
 
@@ -135,9 +135,8 @@ export const bio = {
   paragraphs: [
     "My name is Brian Kyser. I have lived in Doraville with my wife Jennifer (an avid baker) and our fur babies for over 10 years. You can often find me digging in my garden, enjoying a morning run through the hills of our neighborhood and serving as unpaid courier to deliver my wife's baked goods to various neighbors. When I'm not doing any of that, I'm working as a Solution Engineer at SAP.",
     "But here's what I really want you to know:",
-    "I love this city. Not in a polished, campaign-speech kind of way but in the real way we all love a place that feels like home. Here in Doraville, we're a small city with a big personality. We have our quirks. We have our disagreements. Yet at the end of the day, we still show up for each other.",
-    "That's the Doraville I know and love. The neighbor who checks in when they haven't seen you in a few days. The plate of treats dropped off just because. The neighbors who don't always agree but still look out for one another.",
-    "As metro Atlanta grows and changes, a lot of cities are starting to look the same. I don't want that for Doraville. Doraville is something different. Our scrappy character is our advantage and I believe protecting it is one of the most important things we can do as we grow.",
+    "I love this city. Not in a polished, campaign-speechy kind of way but in the real way we all love a place that feels like home. Here in Doraville, we're a small city with a big personality. We have our quirks. We have our struggles. Yet even though we may not always agree, at the end of the day, we still show up for each other. That's the Doraville I know and love.",
+    "As metro Atlanta grows and changes, a lot of cities are starting to look the same. I don't want that for Doraville. Doraville is something different. We are not Chamblee. We are not Brookhaven. Doraville has its own history, its own people, and its own charm. Growth is still welcome, but on our terms, in our voice, and at our pace. Our scrappy character is an advantage and I believe protecting it is one of the most important things we can do as we grow.",
     "I'm running for City Council, District 2 because I want to make sure that as Doraville changes, we don't lose what makes Doraville, Doraville. I plan to bring that same neighborly spirit to City Hall. That means listening first, working across differences, leading with transparency, and making decisions that serve the people who actually live here. I envision a Doraville that grows thoughtfully, stays connected to the community, and never forgets who we are.",
     "I'd be honored to earn your vote on November 3rd.",
     "-Brian"
@@ -219,7 +218,7 @@ export const photos: {
 ];
 
 export const contact = {
-  heading: "Let's talk.",
+  heading: "Let's Talk",
   body:
     "Questions about the campaign? Want a yard sign, want to volunteer, want to canvass, or just meet for coffee in Doraville? Send a note. I read every email personally.",
   cta: "Email the campaign",

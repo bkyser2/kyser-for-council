@@ -30,24 +30,6 @@ html {
   color: #a33e5c;
 }
 
-/* Hero grid background, soft white lines on the raspberry pink */
-.hero-grid {
-  background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
-  background-size: 56px 56px;
-  mask-image: radial-gradient(
-    ellipse at 50% 40%,
-    rgba(0, 0, 0, 1) 30%,
-    transparent 75%
-  );
-  -webkit-mask-image: radial-gradient(
-    ellipse at 50% 40%,
-    rgba(0, 0, 0, 1) 30%,
-    transparent 75%
-  );
-}
-
 /* Animated gradient text used on the tagline: white -> sky -> white */
 .gradient-text {
   background: linear-gradient(

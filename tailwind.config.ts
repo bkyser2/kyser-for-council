@@ -34,7 +34,8 @@ const config: Config = {
       },
       backgroundImage: {
         // Soft light glow behind the hero on the dark raspberry background.
-        "grid-fade":
+        // Sky-blue wash on the left, warm white highlight on the right.
+        "hero-glow":
           "radial-gradient(ellipse at 30% 0%, rgba(125,211,252,0.22), transparent 55%), radial-gradient(ellipse at 75% 10%, rgba(255,255,255,0.15), transparent 55%)",
       },
       keyframes: {
