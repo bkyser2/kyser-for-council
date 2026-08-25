@@ -41,13 +41,24 @@ export const candidate = {
    *                  bank account and ActBlue page are still being set up.
    *   "live"         Live donate CTA that links out to `donateUrl` (ActBlue).
    *
-   * When your bank account is approved and the ActBlue page is created:
-   *   1. Paste the ActBlue URL into `donateUrl` below.
-   *   2. Change `donateStatus` from "coming-soon" to "live".
-   *   3. Commit. That's it. No component edits needed.
+   * `donateUrl` must be the BASE ActBlue URL (no query string). The site will
+   * append `?amount=XX&refcode=...` automatically when the user clicks a
+   * preset amount button, so ActBlue opens with that amount preselected.
    */
-  donateStatus: "coming-soon" as "coming-soon" | "live",
-  donateUrl: "", // e.g. "https://secure.actblue.com/donate/kyser-for-doraville"
+  donateStatus: "live" as "coming-soon" | "live",
+  donateUrl: "https://secure.actblue.com/donate/brian-kyser-1",
+  /**
+   * Preset donation amounts shown as buttons on the /donate page.
+   * Order matters (left-to-right, top-to-bottom). Keep to 5 or 6 for layout.
+   * `highlight: true` visually emphasizes the "suggested" amount.
+   */
+  donateAmounts: [
+    { value: 25, label: "$25" },
+    { value: 50, label: "$50" },
+    { value: 100, label: "$100", highlight: true },
+    { value: 250, label: "$250" },
+    { value: 500, label: "$500" },
+  ] as { value: number; label: string; highlight?: boolean }[],
   // "Paid for by" line required by Georgia campaign-finance law.
   paidForBy: "Paid for by Brian Kyser for Doraville.",
 };

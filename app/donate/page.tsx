@@ -129,27 +129,88 @@ export default function DonatePage() {
   );
 }
 
+/**
+ * Build an ActBlue deep-link with the amount preselected. ActBlue reads the
+ * `amount` query param and preselects it on the donation form, and `refcode`
+ * shows up in your ActBlue dashboard so you can see which button on your site
+ * drove each contribution.
+ */
+function actBlueUrl(baseUrl: string, amount?: number): string {
+  try {
+    const u = new URL(baseUrl);
+    if (amount && amount > 0) {
+      u.searchParams.set("amount", String(amount));
+      u.searchParams.set("refcode", `site-donate-${amount}`);
+    } else {
+      u.searchParams.set("refcode", "site-donate-other");
+    }
+    return u.toString();
+  } catch {
+    // If donateUrl is malformed for any reason, fall back to the raw string.
+    return baseUrl;
+  }
+}
+
 function LiveCTA({ url }: { url: string }) {
+  const amounts = candidate.donateAmounts;
+
   return (
     <div
-      className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row animate-fade-up"
+      className="mt-10 animate-fade-up"
       style={{ animationDelay: "240ms" }}
     >
-      <a
-        href={url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="group inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-base font-semibold text-[#0b1e3a] shadow-md transition-all hover:bg-brand hover:text-[#0b1e3a]"
+      {/* Preset amount grid */}
+      <div
+        role="group"
+        aria-label="Choose a contribution amount"
+        className="mx-auto grid max-w-2xl grid-cols-2 gap-3 sm:grid-cols-3"
       >
-        Donate on ActBlue
-        <ArrowRight
-          size={18}
-          className="transition-transform group-hover:translate-x-0.5"
-        />
-      </a>
-      <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted">
-        Secure · Powered by ActBlue
-      </span>
+        {amounts.map((a) => (
+          <a
+            key={a.value}
+            href={actBlueUrl(url, a.value)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`group relative inline-flex items-center justify-center rounded-xl px-4 py-4 text-xl font-extrabold shadow-md transition-all ${
+              a.highlight
+                ? "bg-white text-[#0b1e3a] ring-2 ring-white hover:bg-brand"
+                : "bg-white/95 text-[#0b1e3a] hover:bg-white"
+            }`}
+          >
+            {a.label}
+            {a.highlight && (
+              <span className="absolute -top-2 right-3 rounded-full bg-[#0b1e3a] px-2 py-0.5 font-mono text-[9px] font-bold uppercase tracking-widest text-white">
+                Popular
+              </span>
+            )}
+          </a>
+        ))}
+        {/* "Other amount" — full-width on mobile, last cell on desktop */}
+        <a
+          href={actBlueUrl(url)}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="col-span-2 inline-flex items-center justify-center rounded-xl border-2 border-white/60 bg-transparent px-4 py-4 text-base font-bold text-white transition-all hover:border-white hover:bg-white/10 sm:col-span-1"
+        >
+          Other amount
+        </a>
+      </div>
+
+      {/* Secondary link + trust badge */}
+      <div className="mx-auto mt-6 flex max-w-2xl flex-col items-center justify-between gap-3 sm:flex-row">
+        <a
+          href={actBlueUrl(url)}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 text-sm font-semibold text-white/85 underline decoration-white/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
+        >
+          Or make it recurring on ActBlue
+          <ArrowRight size={14} />
+        </a>
+        <span className="font-mono text-[11px] font-bold uppercase tracking-widest text-white/75">
+          Secure · Powered by ActBlue
+        </span>
+      </div>
     </div>
   );
 }
