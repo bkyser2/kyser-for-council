@@ -91,7 +91,7 @@ export const priorities = [
    {
     title: "Room for Birds, Bees, and Backyards",
     stat: "Environmentally Conscious",
-    body: "Nature isn't a luxury, it's part of what makes Doraville feel like home. I'll push for stronger mature tree preservation, smarter stormwater planning, and wildlife-friendly building standards that protect our songbirds, pollinators, and green spaces as we grow. Because how we build matters just as much as what we build.",
+    body: "Nature isn't a luxury. I'll push for stronger mature tree preservation, smarter stormwater planning, and wildlife-friendly building standards and ordinances that protect our songbirds, pollinators, and natural spaces as we grow. And currently, if you want to responsibly recycle electronics, paint, Styrofoam or hard-to-recycle material, you're driving to another city. I'll work towards creating CHaRM-style drop-off events right here in our community.",
   },
    {
     title: "Open Communication",
