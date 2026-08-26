@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
+import { Analytics } from "@vercel/analytics/react";
 import { candidate } from "@/content";
 import DonateFAB from "@/components/DonateFAB";
 import "./globals.css";
@@ -37,6 +38,13 @@ export default function RootLayout({
       <body className="bg-background text-foreground antialiased">
         {children}
         <DonateFAB />
+        {/*
+          Vercel Web Analytics. Renders NO visible UI — it injects a tiny,
+          privacy-friendly script that reports pageviews to the Vercel
+          dashboard (Project → Analytics tab). Visitors see nothing.
+          Only sends data when deployed on Vercel; a no-op in local dev.
+        */}
+        <Analytics />
       </body>
     </html>
   );
