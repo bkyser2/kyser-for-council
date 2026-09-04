@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Priorities from "@/components/Priorities";
 import Record from "@/components/Record";
+import ElectionInfo from "@/components/ElectionInfo";
 import Photos from "@/components/Photos";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -23,6 +24,7 @@ export default function Page() {
         <About />
         <Priorities />
         <Record />
+        <ElectionInfo />
         <Photos />
         <Contact />
       </main>

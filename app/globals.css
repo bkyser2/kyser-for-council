@@ -18,10 +18,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Smooth anchor scroll for section navigation */
+/* Smooth anchor scroll for section navigation. The scroll offset accounts for
+   the fixed Nav (64px) plus the election banner height (--banner-h, set by
+   ElectionBanner; 0px when the banner is hidden). */
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px;
+  scroll-padding-top: calc(80px + var(--banner-h, 0px));
 }
 
 /* Text selection: light overlay */

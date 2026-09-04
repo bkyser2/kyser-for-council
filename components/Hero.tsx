@@ -5,6 +5,10 @@ export default function Hero() {
   return (
     <section
       id="top"
+      // Base top padding clears the fixed Nav (pt-40 / sm:pt-48); the extra
+      // margin-top pushes the whole hero down by the election banner's height
+      // (0px when the banner is hidden/dismissed).
+      style={{ marginTop: "var(--banner-h, 0px)" }}
       className="relative isolate overflow-hidden pt-40 pb-28 sm:pt-48 sm:pb-36"
     >
       {/* Soft radial glow behind the hero */}

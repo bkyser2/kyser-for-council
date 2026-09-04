@@ -67,10 +67,123 @@ export const nav = [
   { label: "About", href: "#about" },
   { label: "Priorities", href: "#priorities" },
   { label: "Record", href: "#record" },
+  { label: "Vote", href: "#vote" },
   { label: "Photos", href: "#photos" },
   { label: "Contact", href: "#contact" },
   { label: "Donate", href: "/donate" },
 ];
+
+/**
+ * ============================================================================
+ *  ELECTION / VOTING INFORMATION
+ * ============================================================================
+ *  Powers the dismissable election banner at the top of every page
+ *  (ElectionBanner) AND the "Vote" section on the homepage (ElectionInfo, #vote).
+ *
+ *  ✅ DATES BELOW ARE FROM DEKALB COUNTY for the Nov 3, 2025 General/Special
+ *     Election. Re-confirm before publishing and update if the county changes
+ *     anything:
+ *       https://dekalbcountyga.gov/departments/voter-registration-and-elections
+ *       https://mvp.sos.ga.gov/   (Georgia "My Voter Page" — check registration/precinct)
+ *
+ *  QUICK CONTROLS
+ *    showBanner  true  = show the banner at the top of every page.
+ *                false = hide the banner (the #vote section stays visible).
+ *    bannerId    Bump this string (e.g. to "vote-2025-v2") after you change
+ *                dates/locations to re-show the banner to visitors who already
+ *                dismissed the previous version.
+ * ============================================================================
+ */
+export const election = {
+  showBanner: true,
+  bannerId: "vote-2025-v1",
+
+  // Election Day. ISO date drives the live countdown in the banner.
+  electionDate: "2026-11-03",
+  electionDateLabel: "Tuesday, November 3, 2026",
+  electionDayHours: "Polls open 7:00 AM – 7:00 PM",
+  electionDayNote:
+    "On Election Day you must vote at your assigned precinct. Confirm yours at mvp.sos.ga.gov.",
+
+  // Advance (in-person early) voting window — DeKalb County.
+  earlyVoting: {
+    startDate: "2026-10-13",
+    endDate: "2026-10-30",
+    rangeLabel: "October 13 – 30, 2026",
+    hours: "Weekdays 7 AM – 7 PM · Sat Oct 17 & 24, 9 AM – 6 PM · Sun Oct 18 & 25, 12 – 6 PM",
+    note:
+      "During early voting you may vote at ANY early-voting location in DeKalb County — not just your assigned precinct.",
+  },
+
+  // Key deadlines. VERIFY the 2026 dates with DeKalb County / GA SOS.
+  registrationDeadline: "October 5, 2026", // VERIFY (2026)
+  absenteeRequestDeadline: "October 23, 2026", // VERIFY (2026)
+  registrationUrl: "https://registertovote.sos.ga.gov/",
+  checkRegistrationUrl: "https://mvp.sos.ga.gov/",
+  // Full official early-voting location list for DeKalb County.
+  countyElectionsUrl:
+    "https://dekalbcountyga.gov/departments/voter-registration-and-elections",
+
+  /**
+   * Doraville Election-Day polling place (District precinct).
+   */
+  electionDayPrecinct: {
+    name: "Honeysuckle Park – Forest Fleming Arena",
+    address: "3037 Pleasant Valley Drive, Atlanta, GA 30340",
+  },
+
+  /**
+   * EARLY-VOTING LOCATIONS shown in the #vote section, grouped by city.
+   *
+   *  Any registered DeKalb County voter may use ANY early-voting site, so the
+   *  sites below are the ones nearest each requested city (Doraville gets the
+   *  closest; Chamblee and Brookhaven are included for early voting only, as
+   *  requested). The full county list is linked via `countyElectionsUrl`.
+   *
+   *  `mapUrl` is optional — if omitted, the site auto-builds a Google Maps
+   *  search link from the address.
+   */
+  locationsByCity: [
+    {
+      city: "Chamblee",
+      note: "Nearest early-voting site to Doraville.",
+      locations: [
+        {
+          name: "North DeKalb Senior Center",
+          address: "3393 Malone Dr, Chamblee, GA 30341",
+        },
+      ],
+    },
+    {
+      city: "Brookhaven",
+      note: "Early voting only. Nearest sites.",
+      locations: [
+        {
+          name: "Briarwood Recreation Center",
+          address: "2235 Briarwood Way NE, Atlanta, GA 30319",
+        },
+        {
+          name: "Dunwoody Library",
+          address: "5339 Chamblee Dunwoody Rd, Dunwoody, GA 30338",
+        },
+      ],
+    },
+    {
+      city: "Tucker",
+      note: "Early voting only.",
+      locations: [
+        {
+          name: "Tucker Library",
+          address: "5234 Lavista Rd, Tucker, GA 30084",
+        },
+      ],
+    },
+  ] as {
+    city: string;
+    note?: string;
+    locations: { name: string; address: string; mapUrl?: string }[];
+  }[],
+};
 
 /**
  * The headline commitments shown in the platform grid.

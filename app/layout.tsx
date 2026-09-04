@@ -4,6 +4,7 @@ import { GeistMono } from "geist/font/mono";
 import { Analytics } from "@vercel/analytics/react";
 import { candidate } from "@/content";
 import DonateFAB from "@/components/DonateFAB";
+import ElectionBanner from "@/components/ElectionBanner";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -36,6 +37,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="bg-background text-foreground antialiased">
+        <ElectionBanner />
         {children}
         <DonateFAB />
         {/*
