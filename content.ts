@@ -67,11 +67,58 @@ export const nav = [
   { label: "About", href: "#about" },
   { label: "Priorities", href: "#priorities" },
   { label: "Record", href: "#record" },
+  { label: "Blog", href: "/blog" },
   { label: "Vote", href: "#vote" },
   { label: "Photos", href: "#photos" },
   { label: "Contact", href: "#contact" },
   { label: "Donate", href: "/donate" },
 ];
+
+/**
+ * ============================================================================
+ *  NEWSLETTER / EMAIL SIGNUP
+ * ============================================================================
+ *  Controls the "Stay in the Loop" signup form on the homepage.
+ *
+ *  provider:
+ *    "mailto"     Zero-setup default. The form opens the visitor's email
+ *                 client with a pre-filled message asking to be added.
+ *                 You collect signups manually in your inbox. Perfect for
+ *                 small campaigns and totally spam-free.
+ *
+ *    "formspree"  Point `actionUrl` at your Formspree endpoint
+ *                 (https://formspree.io/f/xxxxxxx). Free tier is generous
+ *                 and it forwards each signup to your inbox.
+ *
+ *    "buttondown" Point `actionUrl` at your Buttondown embed endpoint
+ *                 (https://buttondown.email/api/emails/embed-subscribe/YOURNAME).
+ *                 Buttondown has a free tier, is privacy-friendly, and can
+ *                 auto-send new blog posts via RSS-to-email.
+ *
+ *    "custom"     Any other service (ConvertKit, Mailchimp, Netlify Forms,
+ *                 Beehiiv, etc.) that accepts a plain form POST with an
+ *                 `email` field.
+ *
+ *  RECOMMENDED WORKFLOW
+ *    - Start with "mailto" so signups work today.
+ *    - When you're ready, sign up for Buttondown (or similar) and switch
+ *      `provider` to "buttondown" with the correct `actionUrl`. Then
+ *      enable the service's built-in "RSS-to-email" feature and point it
+ *      at `/rss.xml` on this site. Every new blog post will automatically
+ *      email your subscribers.
+ * ============================================================================
+ */
+export const newsletter = {
+  // Currently using Buttondown. Signups go straight into your Buttondown list.
+  provider: "buttondown" as "mailto" | "formspree" | "buttondown" | "custom",
+  // Buttondown embed endpoint. The last path segment is your Buttondown
+  // username (lowercase, as it appears in your buttondown.email/<username> URL).
+  actionUrl:
+    "https://buttondown.email/api/emails/embed-subscribe/brian-kyser",
+  heading: "Get Campaign Updates in Your Inbox",
+  body:
+    "A short, honest email after each Doraville City Council meeting — what was voted on, what it means for your neighborhood, and what's coming next. No fundraising spam, no forwarded chain mail, no daily blasts. Unsubscribe any time.",
+};
 
 /**
  * ============================================================================
@@ -347,4 +394,75 @@ export const contact = {
     "Questions about the campaign? Want a yard sign, want to volunteer, want to canvass, or just meet for coffee in Doraville? Send a note. I read every email personally.",
   cta: "Email the campaign",
 };
+
+/**
+ * ============================================================================
+ *  BLOG POSTS
+ * ============================================================================
+ *  Every post below becomes:
+ *    - a card on the /blog listing page
+ *    - a full-page article at /blog/<slug>
+ *    - an entry in /rss.xml (which can auto-email your subscribers)
+ *    - a "Latest updates" preview on the homepage
+ *
+ *  HOW TO ADD A NEW POST
+ *  ---------------------
+ *  1. Copy an existing block below and paste it at the TOP of the array
+ *     (newest posts come first — the site does not re-sort automatically).
+ *  2. Fill in the fields:
+ *       slug        URL-safe id. Lowercase, dashes only. This becomes the
+ *                   permalink: /blog/<slug>
+ *       title       Post title.
+ *       date        ISO date "YYYY-MM-DD". Shown as "Month D, YYYY".
+ *       excerpt     1–2 sentence teaser shown on the blog index and homepage.
+ *       tags        Optional. Short labels like "Council Recap", "Budget".
+ *       body        Array of strings. Each string is a paragraph. You can
+ *                   also use these lightweight markers at the START of a
+ *                   string to control formatting:
+ *                       "## Heading"      -> section heading
+ *                       "> quote text"    -> pull-quote / blockquote
+ *                       "- bullet point"  -> bullet in a list (consecutive
+ *                                            "- " lines are grouped)
+ *                       "1. numbered"     -> numbered list item
+ *                   Anything else renders as a normal paragraph.
+ *  3. Save and commit. Vercel deploys in ~30 seconds.
+ *
+ *  TIP: If you connect Buttondown (or similar) with the newsletter, its
+ *  "RSS-to-email" feature will pick up new posts from /rss.xml automatically,
+ *  so publishing here also emails your list.
+ * ============================================================================
+ */
+export type BlogPost = {
+  slug: string;
+  title: string;
+  date: string; // ISO "YYYY-MM-DD"
+  excerpt: string;
+  tags?: string[];
+  body: string[];
+};
+
+export const blog: BlogPost[] = [
+  {
+    slug: "why-im-running",
+    title: "Why I'm Running for City Council",
+    date: "2025-09-15",
+    excerpt:
+      "A quick note on why I filed to run for Doraville City Council, District 2 — and what I hope to bring to City Hall.",
+    tags: ["Campaign"],
+    body: [
+      "Hi neighbors — Brian here. If we haven't met yet, hopefully we will soon. I'm running for Doraville City Council, District 2, and this is the first post on what I'm going to try to keep as an honest, plain-language running log of the campaign.",
+      "## Why now",
+      "Doraville is changing fast. Some of that change is exciting. Some of it is concerning. And a lot of it seems to be happening without much of a real conversation with the people who actually live here. I want to help fix that.",
+      "> I'm not running because I think I have all the answers. I'm running because I think we deserve better questions being asked at City Hall.",
+      "## What you can expect from this space",
+      "- A short recap after each council meeting: what was voted on and what it means.",
+      "- Occasional deeper dives on issues like the budget, tree canopy, and traffic.",
+      "- Ways to plug in — town halls, canvassing, yard signs, and coffees.",
+      "- Zero hype, zero doom-scrolling, and definitely no daily fundraising blasts.",
+      "If you'd like these updates delivered to your inbox instead of remembering to check the site, scroll down on the homepage and drop your email in the signup form. I'll only send when I have something worth saying.",
+      "Thanks for reading, and for caring about Doraville.",
+      "— Brian",
+    ],
+  },
+];
 

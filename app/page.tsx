@@ -4,6 +4,9 @@ import About from "@/components/About";
 import Priorities from "@/components/Priorities";
 import Record from "@/components/Record";
 import ElectionInfo from "@/components/ElectionInfo";
+import BlogPreview from "@/components/BlogPreview";
+import Newsletter from "@/components/Newsletter";
+import GetInvolved from "@/components/GetInvolved";
 import Photos from "@/components/Photos";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -24,6 +27,9 @@ export default function Page() {
         <About />
         <Priorities />
         <Record />
+        <BlogPreview />
+        <Newsletter />
+        <GetInvolved />
         <ElectionInfo />
         <Photos />
         <Contact />

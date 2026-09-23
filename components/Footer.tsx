@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { Rss } from "lucide-react";
 import { candidate } from "@/content";
 
 export default function Footer() {
@@ -17,13 +19,35 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col items-start gap-1 sm:items-end">
-          <a
-            href={`mailto:${candidate.email}`}
-            className="text-sm font-semibold text-white/85 transition-colors hover:text-white"
-          >
-            {candidate.email}
-          </a>
+        <div className="flex flex-col items-start gap-2 sm:items-end">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm font-semibold text-white/85">
+            <Link
+              href="/#newsletter"
+              className="transition-colors hover:text-white"
+            >
+              Subscribe
+            </Link>
+            <Link
+              href="/blog"
+              className="transition-colors hover:text-white"
+            >
+              Blog
+            </Link>
+            <a
+              href="/rss.xml"
+              className="inline-flex items-center gap-1 transition-colors hover:text-white"
+              aria-label="RSS feed"
+            >
+              <Rss size={12} />
+              RSS
+            </a>
+            <a
+              href={`mailto:${candidate.email}`}
+              className="transition-colors hover:text-white"
+            >
+              {candidate.email}
+            </a>
+          </div>
           <div className="text-xs font-medium text-white/60">© {year} All rights reserved.</div>
         </div>
       </div>
